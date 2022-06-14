@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Node
 {
 public:
@@ -13,19 +12,31 @@ public:
     }
 };
 
-bool detectCycle(Node *head)
+Node *firstNode(Node *head)
 {
-    //	Write your code here
-    Node *slow = head;
-    Node *fast = head;
+    //    Write your code here.
     if (head == NULL)
-        return false;
+        return NULL;
+    Node *fast = head;
+    Node *slow = head;
+    bool flag = false;
     while (fast->next && fast->next->next)
     {
         slow = slow->next;
         fast = fast->next->next;
         if (slow == fast)
-            return true;
+        {
+            flag = true;
+            break;
+        }
     }
-    return false;
+    if (flag == false)
+        return NULL;
+    slow = head;
+    while (slow != fast)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    return slow;
 }
