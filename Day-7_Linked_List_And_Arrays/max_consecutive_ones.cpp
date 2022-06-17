@@ -1,17 +1,21 @@
 /*
     Problem Link: https://leetcode.com/problems/max-consecutive-ones/
 */
+#include <bits/stdc++.h>
+using namespace std;
 
-int findMaxConsecutiveOnes(vector<int> &nums) {
+int findMaxConsecutiveOnes(vector<int> &nums)
+{
     int max_count = 0, count = 0;
 
-    for(const int &x : nums) {
-        if(x == 1)
+    for (const int &x : nums)
+    {
+        if (x == 1)
             count++;
-        else    
+        else
             count = 0;
 
-        max_count = max(max_count, count); 
+        max_count = max(max_count, count);
     }
     return max_count;
 }
